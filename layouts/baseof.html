@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ .Title }} | Code Network</title>
+
+  {{ with resources.Get "css/global.css" }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}">
+  {{ end }}
+</head>
+<body>
+  {{ partial "header" . }}
+
+  <main>
+    {{ template "main" . }}
+  </main>
+</body>
+</html>

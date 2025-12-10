@@ -1,0 +1,8 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Code Network'
+
+sectionPagesMenu = 'main'
+
+[params]
+signup_url = 'https://campus.hellorubric.com/?tab=memberships&s=4917'

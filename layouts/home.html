@@ -1,0 +1,16 @@
+{{ define "main" }}
+  {{ with resources.Get "images/WinterHack_2025.avif"}}
+    <img src="{{ .RelPermalink }}" alt="Winter Hackathon 2025">
+  {{ end }}
+
+  <style>
+    h1 {
+      font-family: Bungee;
+      color: var(--primary);
+    }
+  </style>
+
+  <article style="padding: 2rem; width: max-content; margin: auto;">
+    {{ .Content }}
+  </article>
+{{ end }}
