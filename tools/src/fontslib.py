@@ -2,9 +2,11 @@ import requests
 from zipfile import ZipFile
 import io
 from pathlib import Path
-from typing import Iterable
+from typing import Iterable, BinaryIO
 import shutil
 import sys
+from fontTools.ttLib import TTFont
+import fontTools.ttLib.woff2
 
 def github_releases(repo: str) -> dict:
     api_url = f"https://api.github.com/repos/{repo}/releases/latest"
@@ -28,6 +30,11 @@ def download_zip(download_url: str) -> ZipFile:
 
     return zip_ref
 
+def to_woff2(source: BinaryIO, dest_path: Path):
+    font = TTFont(source)
+    font.flavor = "woff2"
+    font.save(dest_path)
+
 def save_members(zip_ref: ZipFile, out_dir: Path, *members: str):
     """
     Extract zip members without their parent directories.
@@ -36,12 +43,24 @@ def save_members(zip_ref: ZipFile, out_dir: Path, *members: str):
     """
 
     for member in members:
+        member_path = Path(member)
+
+        dest_filename = member_path.name
+        is_ttf = member_path.suffix in (".ttf", ".otf")
+
+        if is_ttf:
+            dest_filename = member_path.stem + ".woff2"
+
         dest_path = Path(
             out_dir,
-            Path(member).name
+            dest_filename
         )
-        with zip_ref.open(member) as source, open(dest_path, "wb") as destination:
-            shutil.copyfileobj(source, destination)
+        with zip_ref.open(member) as source:
+            if is_ttf:
+                to_woff2(source, dest_path)
+            else:
+                with open(dest_path, "wb") as destination:
+                    shutil.copyfileobj(source, destination)
 
 def try_get(url: str) -> requests.Response:
     response = requests.get(url)

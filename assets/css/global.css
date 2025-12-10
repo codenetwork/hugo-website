@@ -63,7 +63,7 @@ p, li, figcaption {
   font-family: Bungee;
   font-style: normal;
   font-weight: 400;
-  src: url("/fonts/Bungee-Regular.ttf") format("truetype")
+  src: url("/fonts/Bungee-Regular.woff2") format("truetype")
 }
 
 /* colors and spacing */
