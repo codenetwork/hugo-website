@@ -39,11 +39,9 @@
     </ul>
   </nav>
 
-  {{ with resources.Get "images/logo.svg" }}
-      <img src="{{ .RelPermalink }}" alt="Code Network logo">
-  {{ end }}
+  <img src="images/logo.svg" alt="Code Network logo">
 
-  <a href="{{ .Site.Params.signup_url }}" class="btn base primary" style="
+  <a href="{{ .Site.Params.signupURL }}" class="btn base primary" style="
     justify-self: end;
     margin-right: var(--item-gap);
   ">Join!</a>

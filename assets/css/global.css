@@ -4,8 +4,9 @@
   box-sizing: border-box;
 }
 
-*:not(p) {
+body {
   margin: 0;
+  padding: 0;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -91,14 +92,34 @@ body {
   font-family: InterVariable;
 }
 
+main {
+  padding-bottom: 3rem;
+  display: grid;
+  grid-template-columns: 1fr minmax(30ch,65ch) 1fr;
+  gap: 2rem;
+
+  & > * {
+    grid-column: 2;
+  }
+
+  .full-bleed {
+    grid-column: 1 / -1;
+  }
+}
+
 ul.reset {
+  margin: 0;
   padding: 0;
   li { list-style-type: none; }
 }
 
-a.reset {
-  color: inherit;
-  text-decoration: none;
+a {
+  color: var(--primary);
+
+  &.reset {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 /* Use .btn for links styled as buttons */

@@ -1,7 +1,5 @@
 {{ define "main" }}
-  {{ with resources.Get "images/WinterHack_2025.avif"}}
-    <img src="{{ .RelPermalink }}" alt="Winter Hackathon 2025">
-  {{ end }}
+  <img class="full-bleed" src="images/WinterHack_2025.avif" alt="Winter Hackathon 2025">
 
   <style>
     h1 {
@@ -10,7 +8,94 @@
     }
   </style>
 
-  <article style="padding: 2rem; width: max-content; margin: auto;">
+  <article>
     {{ .Content }}
   </article>
+
+  <style>
+    #links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp1);
+
+      li {
+        flex-basis: 10rem;
+        flex-grow: 1;
+      }
+
+      a {
+        background-color: var(--surface);
+        height: 3rem;
+        padding: var(--sp1);
+        border-radius: var(--sp1);
+
+        display: flex;
+        gap: var(--sp2);
+        align-items: center;
+      }
+
+      img { width: 2rem; }
+    }
+
+    .hover-primary-outline {
+      border: 2px solid transparent;
+      &:hover { border: 2px solid var(--primary); }
+    }
+  </style>
+  <section>
+    <h1>Links</h1>
+
+    <ul id="links" class="reset gridish">
+      {{ range .Site.Params.links }}
+        <li>
+          <a href="{{ .url }}" title="{{ .label }}" class="reset hover-primary-outline">
+            <img src="{{ .imagePath }}" alt="{{ .label }}">
+            {{ .label }}
+          </a>
+        </li>
+      {{ end }}
+    </ul>
+  </section>
+
+  <style>
+    .sponsors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp3);
+
+      img { height: 3rem; }
+
+      a {
+        display: block;
+        background-color: var(--surface);
+        padding: var(--sp3);
+        border-radius: var(--sp1);
+      }
+    }
+  </style>
+
+  <section>
+    <h1>Sponsors</h1>
+    <p>Code Network is made possible with the support of our sponsors!</p>
+
+    {{ range .Site.Params.sponsorTiers }}
+      <h2>{{ .name }} tier</h2>
+      <ul class="reset sponsors">
+        {{ range .items }}
+          <li>
+            <a href="{{ .url }}" title="{{ .label }}" class="reset hover-primary-outline">
+              <img src="{{ .imagePath }}" alt="{{ .label }}">
+            </a>
+          </li>
+        {{ end }}
+      </ul>
+    {{ end }}
+
+    <h2>Would you like to support us?</h2>
+    {{ with "industry@codenetwork.co"}}
+      <p>Send us an email at <a href="mailto:{{ . }}">{{ . }}</a></p>
+    {{ end }}
+
+    <a class="btn base primary" href="documents/code_network_2025_prospectus.pdf">Read Our Prospectus</a>
+  </section>
 {{ end }}
