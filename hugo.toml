@@ -10,36 +10,36 @@ signupURL = 'https://campus.hellorubric.com/?tab=memberships&s=4917'
   [[params.links]]
   label = "GitHub"
   url = "https://github.com/codenetwork"
-  imagePath = "images/icons/github.svg"
+  imagePath = "/images/icons/github.svg"
 
   [[params.links]]
   label = "Discord"
   url = "https://discord.gg/scXBk2j4uE"
-  imagePath = "images/icons/discord.svg"
+  imagePath = "/images/icons/discord.svg"
 
   [[params.links]]
   label = "Instagram"
   url = "https://www.instagram.com/codenetwork_/"
-  imagePath = "images/icons/instagram.svg"
+  imagePath = "/images/icons/instagram.svg"
 
   [[params.links]]
   label = "Facebook"
   url = "https://www.facebook.com/CodeNetwork"
-  imagePath = "images/icons/facebook.svg"
+  imagePath = "/images/icons/facebook.svg"
 
   [[params.links]]
   label = "Linkedin"
   url = "https://www.linkedin.com/company/codenetwork/"
-  imagePath = "images/icons/linkedin.svg"
+  imagePath = "/images/icons/linkedin.svg"
 
   [[params.sponsorTiers]]
   name = "Gold"
   items = [
-    { label = "Tanda", url = "https://www.tanda.co/", imagePath = "images/sponsors/tanda.svg" },
+    { label = "Tanda", url = "https://www.tanda.co/", imagePath = "/images/sponsors/tanda.svg" },
   ]
 
   [[params.sponsorTiers]]
   name = "Silver"
   items = [
-    { label = "Macquarie", url = "https://www.macquarie.com/", imagePath = "images/sponsors/macquarie-logo.svg" }
+    { label = "Macquarie", url = "https://www.macquarie.com/", imagePath = "/images/sponsors/macquarie-logo.svg" },
   ]

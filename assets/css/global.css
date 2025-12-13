@@ -107,6 +107,11 @@ main {
   }
 }
 
+h1 {
+  font-family: Bungee;
+  color: var(--primary);
+}
+
 ul.reset {
   margin: 0;
   padding: 0;
@@ -141,4 +146,9 @@ button, a.btn {
       background-color: var(--primary-light);
     }
   }
+}
+
+.hover-primary-outline {
+  border: 2px solid transparent;
+  &:hover { border: 2px solid var(--primary); }
 }
